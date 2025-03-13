@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disease Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* Style for symptom checkboxes */
+        .symptom-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .symptom-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 1rem;
+        }
+
+        /* Style for results */
+        .result-list {
+            list-style: none; /* Remove default bullet points */
+            padding: 0;
+        }
+
+        .result-list li::before {
+            content: "• "; /* Custom bullet */
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Error message styling */
+        .error-message {
+            color: red;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Disease Detection</h1>
+        <nav>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('detect') }}">Detect Disease</a>
+            <a href="{{ url_for('about') }}">About</a>
+            <a href="{{ url_for('contact') }}">Contact</a>
+        </nav>
+    </header>
+    
+    <main>
+        <h2>Enter Your Symptoms</h2>
+
+        <!-- Disease Detection Form -->
+        <form class="contact-form" method="POST" action="{{ url_for('detect') }}" onsubmit="return validateForm()">
+            <label>Select Symptoms (Choose exactly 4):</label>
+            <div class="symptom-list">
+                <label class="symptom-item"><input type="checkbox" name="symptoms" value="fever"> Fever</label>
+                <label class="symptom-item"><input type="checkbox" name="symptoms" value="cough"> Cough</label>
+                <label class="symptom-item"><input type="checkbox" name="symptoms" value="body ache"> Body Ache</label>
+                <label class="symptom-item"><input type="checkbox" name="symptoms" value="chills"> Chills</label>
+                <label class="symptom-item"><input type="checkbox" name="symptoms" value="runny nose"> Runny Nose</label>
+                <label class="symptom-item"><input type="checkbox" name="symptoms" value="sore throat"> Sore Throat</label>
+                <label class="symptom-item"><input type="checkbox" name="symptoms" value="loss of taste"> Loss of Taste</label>
+                <label class="symptom-item"><input type="checkbox" name="symptoms" value="shortness of breath"> Shortness of Breath</label>
+                <label class="symptom-item"><input type="checkbox" name="symptoms" value="headache"> Headache</label>
+                <label class="symptom-item"><input type="checkbox" name="symptoms" value="sweating"> Sweating</label>
+            </div>
+
+            <button type="submit">Diagnose</button>
+            <p id="error-message" class="error-message"></p>
+        </form>
+
+        <!-- Results Section -->
+        {% if result %}
+            <h3>Possible Diseases:</h3>
+            <ul class="result-list">
+                {% for disease, percentage in result %}
+                    <li>{{ disease }} - {{ percentage }}%</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 My Website. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function validateForm() {
+            let checkboxes = document.querySelectorAll('input[name="symptoms"]:checked');
+            let errorMessage = document.getElementById("error-message");
+
+            if (checkboxes.length !== 4) {
+                errorMessage.textContent = "Please select exactly 4 symptoms.";
+                return false;
+            }
+
+            errorMessage.textContent = ""; // Clear error message if valid
+            return true;
+        }
+    </script>
+
+</body>
+</html>

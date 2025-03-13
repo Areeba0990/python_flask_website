@@ -1,0 +1,143 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+header {
+background: #333;
+color: white;
+padding: 20px 0 0 0;
+text-align: center;
+position: relative; /* Ensure header is positioned properly */
+}
+
+/* Navigation Bar (Placed Below Header) */
+nav {
+display: flex;
+justify-content: center;
+background: #444;
+padding: 10px 0 0 0;
+position: relative;  /* Make sure it appears after header */
+}
+
+nav a {
+color: white;
+padding: 14px 20px 20px 20px;
+text-decoration: none;
+text-align: center;
+}
+
+nav a:hover {
+background-color: #575757;
+}
+
+/* Responsive Fix */
+@media (max-width: 768px) {
+nav {
+flex-direction: column;
+text-align: center;
+}
+
+nav a {
+display: block;
+width: 100%;
+padding: 20px;
+}
+}
+
+/* Main content */
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+main h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.contact-form input, .contact-form textarea, .contact-form select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.contact-form button {
+    padding: 12px 20px;
+    background-color: #333;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.contact-form button:hover {
+    background-color: #575757;
+}
+
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    main h2 {
+        font-size: 1.75rem;
+    }
+
+    .contact-form label {
+        font-size: 0.9rem;
+    }
+
+    .contact-form input, .contact-form textarea, .contact-form select {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    main h2 {
+        font-size: 1.5rem;
+    }
+
+    .contact-form {
+        padding: 15px;
+    }
+
+    .contact-form label {
+        font-size: 0.8rem;
+    }
+
+    .contact-form input, .contact-form textarea, .contact-form select {
+        font-size: 0.8rem;
+    }
+
+    .contact-form button {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+    }
+}
