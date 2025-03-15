@@ -1,0 +1,46 @@
+/* Navbar */
+nav {
+    display: none; /* Hide navbar by default */
+    flex-direction: column;
+    background-color: black;
+    position: absolute;
+    width: 100%;
+    top: 60px;
+    left: 0;
+    padding: 10px;
+    text-align: center;
+    z-index: 1000;
+}
+
+/* Navbar Links */
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    padding: 10px;
+}
+
+nav a:hover {
+    background-color: #333;
+    border-radius: 5px;
+}
+
+/* Show Menu Icon */
+.menu-icon {
+    display: block;
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+    margin-left: auto; /* Align to the right */
+}
+
+/* Hide the checkbox */
+#menu-toggle {
+    display: none;
+}
+
+/* Show Navbar when Checkbox is Checked */
+#menu-toggle:checked + .menu-icon + nav {
+    display: flex;
+}

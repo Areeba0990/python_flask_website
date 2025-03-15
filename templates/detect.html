@@ -45,7 +45,15 @@
 </head>
 <body>
     <header>
-        <h1>Disease Detection</h1>
+        <div class="header-left">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
+            <h2>Detect the Disease</h2>
+        </div>
+    
+        <!-- Checkbox for menu toggle -->
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-icon">☰</label>
+    
         <nav>
             <a href="{{ url_for('home') }}">Home</a>
             <a href="{{ url_for('detect') }}">Detect Disease</a>

@@ -1,56 +1,138 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+/* General Styles */
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Header */
+/* Header Styling */
 header {
-background: #333;
-color: white;
-padding: 20px 0 0 0;
-text-align: center;
-position: relative; /* Ensure header is positioned properly */
+    background-color: black;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Georgia;
+    position: relative; /* Ensures proper positioning of nav */
 }
 
-/* Navigation Bar (Placed Below Header) */
+/* Left Section (Logo + Heading) */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between logo and heading */
+}
+
+/* Logo Styling */
+.logo {
+    height: 50px; /* Adjust as needed */
+    width: auto;
+}
+
+/* Ensure Heading Stays Aligned */
+.header-left h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    white-space: nowrap; /* Prevents wrapping */
+}
+
+/* Navbar (on the right) */
 nav {
-display: flex;
-justify-content: center;
-background: #444;
-padding: 10px 0 0 0;
-position: relative;  /* Make sure it appears after header */
+    display: flex;
+    gap: 15px;
 }
 
+/* Navbar Links */
 nav a {
-color: white;
-padding: 14px 20px 20px 20px;
-text-decoration: none;
-text-align: center;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px;
 }
 
 nav a:hover {
-background-color: #575757;
+    background-color:#333;
+    border-radius: 5px;
 }
 
-/* Responsive Fix */
-@media (max-width: 768px) {
-nav {
-flex-direction: column;
-text-align: center;
+/* Hide the checkbox */
+#menu-toggle {
+    display: none;
 }
 
-nav a {
-display: block;
-width: 100%;
-padding: 20px;
+/* Mobile Menu Icon */
+.menu-icon {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
 }
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    /* Stack logo and heading horizontally */
+    .header-left {
+        flex-direction: row;
+    }
+
+    /* Reduce heading font size in small screens */
+    .header-left h1 {
+        font-size: 1.5rem;
+    }
+
+    /* Hide Navbar by Default */
+    nav {
+        display: none;
+        flex-direction: column;
+        background-color: black;
+        position: absolute;
+        width: 100%;
+        top: 60px;
+        left: 0;
+        padding: 10px;
+        text-align: center;
+        z-index: 1000;
+    }
+
+    /* Show Menu Icon */
+    .menu-icon {
+        display: block;
+    }
+
+    /* Show Navbar when Checkbox is Checked */
+    #menu-toggle:checked + .menu-icon + nav {
+        display: flex;
+    }
+}
+
+/* Image Styling */
+.responsive-img {
+    max-width: 80%;
+    height: auto;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+/* Footer stays at the bottom */
+footer {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    margin-top: auto; /* Pushes footer to the bottom */
 }
 
 /* Main content */
 main {
     padding: 20px;
+    text-align: center;
+    flex: 1;
+}
+
+h1, h2 {
     text-align: center;
 }
 
@@ -59,6 +141,7 @@ main h2 {
     margin-bottom: 20px;
 }
 
+/* Contact Form Styling */
 .contact-form {
     max-width: 600px;
     margin: 0 auto;
@@ -95,13 +178,6 @@ main h2 {
 
 .contact-form button:hover {
     background-color: #575757;
-}
-
-footer {
-    background: #333;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
 }
 
 /* Media Queries for Responsiveness */
